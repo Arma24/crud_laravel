@@ -3,6 +3,9 @@
 use App\Task;
 use Illuminate\Http\Request;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 /**
  * Show Task Dashboard
  */
@@ -17,32 +20,33 @@ Route::get('/', function () {
 /**
  * Add New Task
  */
-Route::post('/task', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-            'nama' => 'required|max:255',
-            'kelas' => 'required|max:255',
-    ]);
+// Route::post('/task', function (Request $request) {
+//     $validator = Validator::make($request->all(), [
+//             'nama' => 'required|max:255',
+//             'kelas' => 'required|max:255',
+//     ]);
 
-    if($validator->fails()) {
-        return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
-    }
+//     if($validator->fails()) {
+//         return redirect('/')
+//                 ->withInput()
+//                 ->withErrors($validator);
+//     }
 
-    //fungsi untuk menambahkan data ke database
-    $task       = new Task;
-    $task->nama = $request->nama;
-    $task->kelas = $request->kelas;
-    $task->save();
+//     //fungsi untuk menambahkan data ke database
+//     $task       = new Task;
+//     $task->nama = $request->nama;
+//     $task->kelas = $request->kelas;
+//     $task->save();
 
-    return redirect('/');
-});
+//     return redirect('/');
+// });
 
 /**
  * Delete Task
  */
-Route::delete('/task/{task}', function (Task $task){
-    $task->delete();
+// Route::delete('/task/{task}', function (Task $task){
+//     $task->delete();
 
-    return redirect('/');
-});
+//     return redirect('/');
+// });
+Route::get('/home', 'HomeController@index')->name('home');
